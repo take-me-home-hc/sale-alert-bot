@@ -2,21 +2,72 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>편집샵 세일 알림</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem 1.5rem;
+    }
+    .shop {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    .title {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .link-button a {
+      text-decoration: none;
+      color: white;
+      background-color: #111;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
   <h1>국내 편집샵 세일 알림</h1>
-  <div id="saleContainer"></div>
+  <div class="container" id="saleContainer"></div>
+
   <script>
     fetch('./sale_data.json')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById("saleContainer");
         data.forEach(item => {
-          const div = document.createElement("div");
-          div.innerHTML = `<strong>${item.shop}</strong>: <a href="${item.url}" target="_blank">${item.title}</a>`;
-          container.appendChild(div);
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <div class="shop">${item.shop}</div>
+            <div class="title">${item.title}</div>
+            <div class="link-button"><a href="${item.url}" target="_blank">방문하기</a></div>
+          `;
+          container.appendChild(card);
         });
+      })
+      .catch(error => {
+        document.getElementById("saleContainer").innerText = "데이터를 불러오는 데 실패했어요 😥";
+        console.error(error);
       });
   </script>
 </body>
