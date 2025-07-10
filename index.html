@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>편집샵 세일 알림</title>
+</head>
+<body>
+  <h1>국내 편집샵 세일 알림</h1>
+  <div id="saleContainer"></div>
+  <script>
+    fetch('./sale_data.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("saleContainer");
+        data.forEach(item => {
+          const div = document.createElement("div");
+          div.innerHTML = `<strong>${item.shop}</strong>: <a href="${item.url}" target="_blank">${item.title}</a>`;
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
