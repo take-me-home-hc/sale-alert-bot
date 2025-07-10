@@ -8,5 +8,20 @@
     "shop": "8DIVISION",
     "title": "최대 30% 시즌오프",
     "url": "https://www.8division.com"
+  },
+  {
+    "shop": "NOCLAIM",
+    "title": "여름 세일 진행 중",
+    "url": "https://noclaim.kr"
+  },
+  {
+    "shop": "SCULPSTORE",
+    "title": "시즌오프 세일 최대 40%",
+    "url": "https://sculpstore.com"
+  },
+  {
+    "shop": "BLUESMAN",
+    "title": "Sale Collection 업데이트",
+    "url": "https://bluesman.co.kr"
   }
 ]
